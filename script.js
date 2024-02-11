@@ -18,3 +18,6 @@ function addBookToLibrary(newBook) {
     return myLibrary;
 }
 
+function displayEachBook() {
+    
+}

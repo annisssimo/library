@@ -9,7 +9,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: start;
-    min-height: 100vh;
+    height: 100vh;
 }
 
 .books {
@@ -29,12 +29,23 @@ body {
     --card-color: rgb(255, 246, 234);
 }
 
+img[alt="Book"] {
+    width: 90px; 
+    height: 90px;
+}
+
+header {
+    display: flex;
+    padding-left: 50px;
+    align-items: center;
+    gap: 10px;
+}
+
 h1 {
     text-align: center;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 4rem;
     color: var(--dark-brown);
-    margin-bottom: 0;
 }
 
 .button {
