@@ -12,6 +12,7 @@ function Book(title, author, numberOfPages, isRead) {
 
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet');
 
-function addBookToLibrary() {
-  // do stuff here
+function addBookToLibrary(newBook) {
+    let myLibraryUpdated = myLibrary.push(newBook);
+    return myLibraryUpdated;
 }
