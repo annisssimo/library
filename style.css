@@ -51,15 +51,15 @@ header {
 }
 
 img[alt="Book"] {
-    width: 80px; 
-    height: 80px;
+    width: 60px; 
+    height: 60px;
     position: relative;
     top: 14px;
 }
 
 h1 {
     text-align: center;
-    font-size: 4rem;
+    font-size: 3rem;
     color: var(--dark-brown);
     margin-top: 30px;
 }
@@ -71,7 +71,7 @@ h1 {
 }
 
 button {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-family: inherit;
     padding: 10px 20px;
     background-color: var(--brown);
@@ -93,7 +93,7 @@ button::before {
     top: 50%;
     right: 86%;
     transform: translateY(-50%);
-    font-size: 2rem;
+    font-size: 1.6rem;
     color: var(--white);
     opacity: 0;
     transition: opacity 0.3s;
@@ -104,11 +104,22 @@ button:hover::before {
 }
 
 .book-card {
-    height: 300px;
+    height: 250px;
     background-color: var(--card-color);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(46, 1, 1, 0.2);
+    padding: 30px;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    line-height: 40px;
+    border-left: 1rem solid var(--brown);
 } 
+
+p span {
+    font-weight: 700;
+    color: var(--dark-brown);
+}
 
 footer {
     position: absolute;
