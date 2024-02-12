@@ -63,7 +63,7 @@ const outputBox = document.querySelector("output");
 const selectEl = favDialog.querySelector("select");
 const confirmBtn = favDialog.querySelector("#confirmBtn");
 
-// "Show the dialog" button opens the <dialog> modally
+// showButton opens the <dialog> modally
 showButton.addEventListener("click", () => {
   favDialog.showModal();
 });

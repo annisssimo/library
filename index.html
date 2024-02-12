@@ -35,26 +35,28 @@
     </footer>
 
     <!-- A modal dialog containing a form -->
-<dialog id="favDialog">
-    <form>
-      <p>
-        <label>
-          Favorite animal:
-          <select>
-            <option value="default">Choose…</option>
-            <option>Brine shrimp</option>
-            <option>Red panda</option>
-            <option>Spider monkey</option>
-          </select>
-        </label>
-      </p>
-      <div>
-        <button value="cancel" formmethod="dialog">Cancel</button>
-        <button id="confirmBtn" value="default">Confirm</button>
-      </div>
-    </form>
-  </dialog>
-  <output></output>
+    <dialog id="favDialog">
+        <form>
+            <h3>Add new book</h3>
+            <div class="input">
+                <input type="text" placeholder="Title">
+            </div>
+            <div class="input">
+                <input type="text" placeholder="Author">
+            </div>
+            <div class="input">
+                <input type="text" placeholder="Pages">
+            </div>
+            <div class="input">
+                <label for="isread">Have you read this book?</label>
+                <input type="checkbox" id="isread">
+            </div>
+        <div>
+            <button value="cancel" formmethod="dialog">Cancel</button>
+            <button id="confirmBtn" value="default">Confirm</button>
+        </div>
+        </form>
+    </dialog>
   
 
 </body>

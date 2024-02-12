@@ -70,7 +70,9 @@ h1 {
     margin: 40px;
 }
 
-#show-dialog-btn {
+#show-dialog-btn,
+#confirmBtn,
+button[value="cancel"] {
     font-size: 1.3rem;
     font-family: inherit;
     padding: 10px 20px;
@@ -148,7 +150,7 @@ footer {
 .read {
     background-color: rgba(183, 69, 69, 0.76);
     color: var(--white);
-    padding: 10px 20px;
+    padding: 5px 10px;
     border: none;
     border-radius: 20px;
     font-family: inherit;
@@ -157,9 +159,45 @@ footer {
 
 .not-read {
     background-color: none;
-    padding: 10px 20px;
+    padding: 5px 10px;
     border: 2px dotted var(--brown);
     border-radius: 40px;
     font-family: inherit;
     font-size: 1.2rem;
+}
+
+
+dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    background-color: var(--card-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(46, 1, 1, 0.2);
+    padding: 30px;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    line-height: 40px;
+    border-left: 1rem solid var(--brown);
+}
+
+input {
+    font-size: inherit;
+    font-family: inherit;
+    border: none;
+    background-color: inherit;
+    padding: 5px 0;
+    margin: 10px;
+}
+
+input:focus {
+    outline: none;
+    border-bottom: 1px solid var(--brown)
+}
+
+#isread {
+    
 }
