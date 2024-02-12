@@ -4,8 +4,8 @@
     --brown: brown;
     --white: aliceblue;
     --card-color: rgb(255, 246, 234);
-    --spacing-xl: 20px;
-    --container-width: 1200px;
+    --spacing: 20px;
+    --container-width: 1400px;
 }
 
 /* CSS RESET */
@@ -32,22 +32,22 @@ body {
 
 header {
     display: flex;
-    padding-left: 50px;
+    padding-left: 100px;
     align-items: center;
     gap: 10px;
 }
 
 .container {
     max-width: var(--container-width);
-    padding: var(--spacing-lg);
+    padding: 0 100px;
     margin: 0 auto;
 }
 
 .books-grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: var(--spacing-xl);
-    margin-top: var(--spacing-xl);
+    gap: var(--spacing);
+    margin-top: var(--spacing);
 }
 
 img[alt="Book"] {
