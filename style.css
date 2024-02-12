@@ -1,28 +1,3 @@
-html {
-    /* footer support */
-    position: relative;
-    min-height: 100%;
-  }
-
-body {
-    margin: 0;
-    padding: 0;
-    background-color: var(--background-beidge);
-    /* footer support */
-    margin-bottom: 100px;
-}
-
-.container {
-}
-
-.books-grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: var(--spacing-xl);
-    margin-top: var(--spacing-xl);
-}
-
-
 :root {
     --background-beidge: antiquewhite;
     --dark-brown: rgb(55, 32, 2);
@@ -30,11 +5,29 @@ body {
     --white: aliceblue;
     --card-color: rgb(255, 246, 234);
     --spacing-xl: 20px;
+    --container-width: 1200px;
 }
 
-img[alt="Book"] {
-    width: 90px; 
-    height: 90px;
+/* CSS RESET */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+    /* footer support */
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background-color: var(--background-beidge);
+    /* footer support */
+    margin-bottom: 100px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 header {
@@ -44,11 +37,31 @@ header {
     gap: 10px;
 }
 
+.container {
+    max-width: var(--container-width);
+    padding: var(--spacing-lg);
+    margin: 0 auto;
+}
+
+.books-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-xl);
+}
+
+img[alt="Book"] {
+    width: 80px; 
+    height: 80px;
+    position: relative;
+    top: 14px;
+}
+
 h1 {
     text-align: center;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 4rem;
     color: var(--dark-brown);
+    margin-top: 30px;
 }
 
 .button {
@@ -58,8 +71,8 @@ h1 {
 }
 
 button {
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 1.5rem;
+    font-family: inherit;
     padding: 10px 20px;
     background-color: var(--brown);
     color: var(--white);
@@ -91,17 +104,15 @@ button:hover::before {
 }
 
 .book-card {
-    width: 300px;
-    height: 400px;
+    height: 300px;
     background-color: var(--card-color);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(46, 1, 1, 0.2);
-}
+} 
 
 footer {
     position: absolute;
     bottom: 0;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     bottom: 0;
     display: flex;
     align-items: center;
@@ -109,10 +120,15 @@ footer {
     gap: 10px;
     width: 100%;
     padding: 16px 0;
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 .github {
     height: 30px;
-    opacity: 0.8;
+    opacity: 0.9;
+    transition: transform 0.3s ease-in-out;
 }
+
+.github:hover {
+    transform: rotate(360deg) scale(1.2);
+  }
