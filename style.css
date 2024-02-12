@@ -166,7 +166,7 @@ footer {
     font-size: 1.2rem;
 }
 
-
+/* MODAL */
 dialog {
     position: fixed;
     top: 50%;
@@ -178,10 +178,6 @@ dialog {
     box-shadow: 0 4px 8px rgba(46, 1, 1, 0.2);
     padding: 30px;
     font-size: 22px;
-    display: flex;
-    flex-direction: column;
-    line-height: 40px;
-    border-left: 1rem solid var(--brown);
 }
 
 input {
@@ -198,6 +194,45 @@ input:focus {
     border-bottom: 1px solid var(--brown)
 }
 
-#isread {
-    
+input[type="checkbox"] {
+    appearance: none;
+    position: relative;
+    width: 1em;
+    height: 1em;
+    border: 1px solid gray;
+    /* Adjusts the position of the checkboxes on the text baseline */
+    vertical-align: -11px;
+    /* Set here so that Windows' High-Contrast Mode can override */
+    color: var(--brown);
+}
+  
+input[type="checkbox"]::before {
+    content: "👍";
+    position: absolute;
+    font-size: 1.2em;
+    right: -1px;
+    top: -0.3em;
+    visibility: hidden;
+}
+  
+input[type="checkbox"]:checked::before {
+    /* Use `visibility` instead of `display` to avoid recalculating layout */
+    visibility: visible;
+}
+
+input[type="checkbox"]:checked {
+    border: none;
+}
+  
+input[type="checkbox"]:disabled {
+    border-color: black;
+    background: #ddd;
+    color: gray;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    gap: 80px;
 }
