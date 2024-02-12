@@ -15,7 +15,7 @@
     </header>
     <main class="container">
         <div class="button">
-            <button>
+            <button id="show-dialog-btn">
                 Add a new book
             </button>
         </div>
@@ -33,5 +33,29 @@
           <img src="./images/github.png" class="github">
         </a>
     </footer>
+
+    <!-- A modal dialog containing a form -->
+<dialog id="favDialog">
+    <form>
+      <p>
+        <label>
+          Favorite animal:
+          <select>
+            <option value="default">Choose…</option>
+            <option>Brine shrimp</option>
+            <option>Red panda</option>
+            <option>Spider monkey</option>
+          </select>
+        </label>
+      </p>
+      <div>
+        <button value="cancel" formmethod="dialog">Cancel</button>
+        <button id="confirmBtn" value="default">Confirm</button>
+      </div>
+    </form>
+  </dialog>
+  <output></output>
+  
+
 </body>
 </html>

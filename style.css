@@ -1,7 +1,7 @@
 :root {
     --background-beidge: antiquewhite;
     --dark-brown: rgb(55, 32, 2);
-    --brown: brown;
+    --brown: rgb(188, 68, 68);
     --white: aliceblue;
     --card-color: rgb(255, 246, 234);
     --spacing: 20px;
@@ -70,7 +70,7 @@ h1 {
     margin: 40px;
 }
 
-button {
+#show-dialog-btn {
     font-size: 1.3rem;
     font-family: inherit;
     padding: 10px 20px;
@@ -82,12 +82,12 @@ button {
     transition: transform 0.3s, padding-left 0.3s;
 }
 
-button:hover {
+#show-dialog-btn:hover {
     transform: scale(1.1);
     padding-left: 2.5rem;
 }
 
-button::before {
+#show-dialog-btn::before {
     content: '+';
     position: absolute;
     top: 50%;
@@ -99,7 +99,7 @@ button::before {
     transition: opacity 0.3s;
 }
 
-button:hover::before {
+#show-dialog-btn:hover::before {
     opacity: 1;
 }
 
@@ -142,4 +142,24 @@ footer {
 
 .github:hover {
     transform: rotate(360deg) scale(1.2);
-  }
+}
+
+
+.read {
+    background-color: rgba(183, 69, 69, 0.76);
+    color: var(--white);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-family: inherit;
+    font-size: 1.2rem;
+}
+
+.not-read {
+    background-color: none;
+    padding: 10px 20px;
+    border: 2px dotted var(--brown);
+    border-radius: 40px;
+    font-family: inherit;
+    font-size: 1.2rem;
+}
