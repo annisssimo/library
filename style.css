@@ -175,7 +175,8 @@ dialog {
     width: 450px;
     background-color: var(--card-color);
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(46, 1, 1, 0.2);
+    border: none;
+    box-shadow: 4px 4px 8px rgba(6, 1, 1, 0.4);
     padding: 30px;
     font-size: 22px;
 }

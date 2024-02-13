@@ -39,21 +39,21 @@
         <form>
             <h3>Add new book</h3>
             <div class="input">
-                <input type="text" placeholder="Title">
+                <input id="title" type="text" placeholder="Title">
             </div>
             <div class="input">
-                <input type="text" placeholder="Author">
+                <input id="author" type="text" placeholder="Author">
             </div>
             <div class="input">
-                <input type="text" placeholder="Pages">
+                <input id="pages" type="text" placeholder="Pages">
             </div>
             <div class="input">
                 <label for="isread">Have you read this book?</label>
-                <input type="checkbox" id="isread">
+                <input id="isread" type="checkbox">
             </div>
         <div class="modal-buttons">
-            <button value="cancel" formmethod="dialog">Cancel</button>
             <button id="confirmBtn" value="default">Confirm</button>
+            <button value="cancel" formmethod="dialog">Cancel</button>
         </div>
         </form>
     </dialog>
