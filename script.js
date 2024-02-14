@@ -39,7 +39,12 @@ function createBookCard(book) {
       bookTitle.innerHTML = `<span>Book title:</span> ${book.title}`;
       bookAuthor.innerHTML = `<span>Author:</span> ${book.author}`;
       numberOfPages.innerHTML = `<span>Pages:</span> ${book.numberOfPages}`;
-      isRead.innerHTML = `<button class="not-read">${book.isRead}</button>`;
+      if (book.isRead) {
+        isRead.innerHTML = `<button class="read">read</button>`;
+      } else {
+        isRead.innerHTML = `<button class="not-read">not read yet</button>`;
+      }
+      
 
 
       booksGridContainer.appendChild(bookCard);
@@ -64,7 +69,7 @@ const getBookFromInput = () => {
   const bookTitle = document.getElementById('title').value;
   const bookAuthor = document.getElementById('author').value;
   const numberOfPages = document.getElementById('pages').value;
-  const isRead = document.getElementById('isread').value;
+  const isRead = document.getElementById('isread').checked;
   return new Book(bookTitle, bookAuthor, numberOfPages, isRead);
 }
 
@@ -78,7 +83,7 @@ function resetModalDialog() {
   document.getElementById('title').value = '';
   document.getElementById('author').value = '';
   document.getElementById('pages').value = '';
-  document.getElementById('isread').value = '';
+  document.getElementById('isread').checked = '';
 }
 
 // showButton opens the <dialog> modally
