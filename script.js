@@ -13,6 +13,7 @@ function addBookToLibrary(newBook) {
   return myLibrary;
 }
 
+//BOILERPLATE
 // const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet');
 // const harryPotter = new Book('Harry Potter and the Sorcerer\'s Stone', 'J.K. Rowling', 309, 'read');
 // const toKillAMockingbird = new Book('To Kill a Mockingbird', 'Harper Lee', 281, 'read');
@@ -28,37 +29,42 @@ function addBookToLibrary(newBook) {
 
 //loops through the array and displays each book on the page
 function createBookCard(book) {
-      const bookCard = document.createElement('div');
-      bookCard.className = 'book-card';
-      
-      const bookTitle = document.createElement('p');
-      const trashcan = document.createElement('button');
-      const titleAndCanContainer = document.createElement('div');
-      const bookAuthor = document.createElement('p');
-      const numberOfPages = document.createElement('p');
-      const isRead = document.createElement('button');
+  const bookCard = document.createElement('div');
+  bookCard.className = 'book-card';
+  
+  const bookTitle = document.createElement('p');
+  const trashcan = document.createElement('button');
+  const titleAndCanContainer = document.createElement('div');
+  const bookAuthor = document.createElement('p');
+  const numberOfPages = document.createElement('p');
+  const isRead = document.createElement('button');
 
-      titleAndCanContainer.classList.add('trash-and-title-container');
-      bookTitle.innerHTML = `<span>Book title:</span> ${book.title}`;
-      trashcan.innerHTML = `<span class="material-symbols-outlined">delete</span>`;
-      trashcan.id = 'delete-button';
-      bookAuthor.innerHTML = `<span>Author:</span> ${book.author}`;
-      numberOfPages.innerHTML = `<span>Pages:</span> ${book.numberOfPages}`;
-      if (book.isRead) {
-        isRead.innerText = 'read';
-        isRead.className = 'read';
-      } else {
-        isRead.innerText = 'not read yet';
-        isRead.className = 'not-read';
-      }
+  titleAndCanContainer.classList.add('trash-and-title-container');
+  bookTitle.innerHTML = `<span>Book title:</span> ${book.title}`;
+  trashcan.innerHTML = `<span class="material-symbols-outlined">delete</span>`;
+  trashcan.id = 'delete-button';
+  bookAuthor.innerHTML = `<span>Author:</span> ${book.author}`;
+  numberOfPages.innerHTML = `<span>Pages:</span> ${book.numberOfPages}`;
+  if (book.isRead) {
+    isRead.innerText = 'read';
+    isRead.className = 'read';
+  } else {
+    isRead.innerText = 'not read yet';
+    isRead.className = 'not-read';
+  }
 
-      booksGridContainer.appendChild(bookCard);
-      bookCard.appendChild(titleAndCanContainer);
-      titleAndCanContainer.appendChild(bookTitle);
-      titleAndCanContainer.appendChild(trashcan);
-      bookCard.appendChild(bookAuthor);
-      bookCard.appendChild(numberOfPages);
-      bookCard.appendChild(isRead);
+  booksGridContainer.appendChild(bookCard);
+  bookCard.appendChild(titleAndCanContainer);
+  titleAndCanContainer.appendChild(bookTitle);
+  titleAndCanContainer.appendChild(trashcan);
+  bookCard.appendChild(bookAuthor);
+  bookCard.appendChild(numberOfPages);
+  bookCard.appendChild(isRead);
+}
+
+const deleteBookFromGrid = (bookCard) => {
+  bookCard.innerHTML = '';
+
 }
 
 const resetBooksGrid = () => {
@@ -79,6 +85,10 @@ const getBookFromInput = () => {
   const isRead = document.getElementById('isread').checked;
   return new Book(bookTitle, bookAuthor, numberOfPages, isRead);
 }
+
+
+
+
 
 
 //MODALS

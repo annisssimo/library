@@ -110,17 +110,22 @@ button[value="cancel"] {
 }
 
 .book-card {
-    height: 250px;
+    height: auto;
     background-color: var(--card-color);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(46, 1, 1, 0.2);
     padding: 30px;
     font-size: 22px;
+    /* line-height: 40px; */
+    border-left: 1rem solid var(--brown);
     display: flex;
     flex-direction: column;
-    line-height: 40px;
-    border-left: 1rem solid var(--brown);
+    justify-content: space-between;
 } 
+
+p {
+    margin-bottom: var(--spacing);
+}
 
 p span {
     font-weight: 700;
@@ -156,7 +161,7 @@ footer {
     padding: 5px 10px;
     border-radius: 10px;
     font-size: 1.2rem;
-    margin-top: 45px;
+    margin-top: 24px;
     box-shadow: 2px 2px 2px rgba(46, 1, 1, 0.2);
     border: 1px solid var(--brown);
     color: var(--brown);
@@ -189,6 +194,8 @@ button[value="cancel"]:hover {
 .trash-and-title-container {
     display: flex;
     justify-content: space-between;
+    align-items: start;
+    gap: 10px;
 }
 
 /* MODAL */
