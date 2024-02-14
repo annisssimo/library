@@ -13,6 +13,10 @@ function Book(title, author, numberOfPages, isRead) {
   this.author = author;
   this.numberOfPages = numberOfPages;
   this.isRead = isRead;
+
+  this.toggleReadStatus = function() {
+    this.isRead = !this.isRead;
+  };
 }
 
 function addBookToLibrary(newBook) {
@@ -33,15 +37,6 @@ function addBookToLibrary(newBook) {
 // addBookToLibrary(theGreatGatsby);
 // addBookToLibrary(romeoAndJuliet);
 
-// const appendChildHandler = () => {
-//   booksGridContainer.appendChild(bookCard);
-//   bookCard.appendChild(titleAndCanContainer);
-//   titleAndCanContainer.appendChild(bookTitle);
-//   titleAndCanContainer.appendChild(trashcan);
-//   bookCard.appendChild(bookAuthor);
-//   bookCard.appendChild(numberOfPages);
-//   bookCard.appendChild(isRead);
-// }
 
 const createBookCardElements = () => {
   bookCard = document.createElement('div');
@@ -93,6 +88,11 @@ function createBookCard(book) {
   bookCard.appendChild(isRead);
 
   trashcan.addEventListener('click', () => deleteBook(bookCard));
+
+  isRead.addEventListener('click', () => {
+    book.toggleReadStatus();
+    updateBooksGrid();
+  });
 }
 
 const deleteBook = (bookCard) => {
