@@ -82,6 +82,8 @@ button {
 
 #show-dialog-btn,
 #confirmBtn,
+#yesBtn,
+#noBtn,
 button[value="cancel"] {
     font-size: 1.3rem;
     padding: 10px 20px;

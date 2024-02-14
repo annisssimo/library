@@ -87,7 +87,9 @@ function createBookCard(book) {
   bookCard.appendChild(numberOfPages);
   bookCard.appendChild(isRead);
 
-  trashcan.addEventListener('click', () => deleteBook(bookCard));
+  trashcan.addEventListener('click', () => {
+    deleteDialog.showModal();
+  });
 
   isRead.addEventListener('click', () => {
     book.toggleReadStatus();
@@ -127,7 +129,7 @@ const getBookFromInput = () => {
 
 //MODALS
 const showButton = document.getElementById("show-dialog-btn");
-const favDialog = document.getElementById("favDialog");
+const favDialog = document.getElementById("add-new-book-dialog");
 const confirmBtn = favDialog.querySelector("#confirmBtn");
 
 function resetModalDialog() {
@@ -150,4 +152,19 @@ confirmBtn.addEventListener("click", (event) => {
   favDialog.close();
   updateBooksGrid();
   resetModalDialog();
+});
+
+//MODAL::ARE YOU SURE YOU WANT TO DELETE THIS BOOK?
+const deleteDialog = document.getElementById("want-to-delete");
+const yesBtn = document.getElementById('yesBtn');
+const noBtn = document.getElementById('noBtn');
+
+
+yesBtn.addEventListener("click", (event) => {
+  deleteDialog.close();
+  deleteBook(bookCard);
+});
+
+noBtn.addEventListener("click", (event) => {
+  deleteDialog.close();
 });
