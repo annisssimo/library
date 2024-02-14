@@ -6,6 +6,7 @@
     <title>Library</title>
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="./images/book.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -14,7 +15,7 @@
         <h1>Library</h1>
     </header>
     <main class="container">
-        <div class="button">
+        <div class="add-button-container">
             <button id="show-dialog-btn">
                 Add a new book
             </button>
@@ -47,14 +48,14 @@
             <div class="input">
                 <input id="pages" type="text" placeholder="Pages">
             </div>
-            <div class="input">
+            <div class="input checkbox">
                 <label for="isread">Have you read this book?</label>
                 <input id="isread" type="checkbox">
             </div>
-        <div class="modal-buttons">
-            <button id="confirmBtn" value="default">Confirm</button>
-            <button value="cancel" formmethod="dialog">Cancel</button>
-        </div>
+            <div class="modal-buttons">
+                <button id="confirmBtn" value="default">Confirm</button>
+                <button value="cancel" formmethod="dialog">Cancel</button>
+            </div>
         </form>
     </dialog>
   

@@ -32,23 +32,30 @@ function createBookCard(book) {
       bookCard.className = 'book-card';
       
       const bookTitle = document.createElement('p');
+      const trashcan = document.createElement('button');
+      const titleAndCanContainer = document.createElement('div');
       const bookAuthor = document.createElement('p');
       const numberOfPages = document.createElement('p');
-      const isRead = document.createElement('p');
+      const isRead = document.createElement('button');
 
+      titleAndCanContainer.classList.add('trash-and-title-container');
       bookTitle.innerHTML = `<span>Book title:</span> ${book.title}`;
+      trashcan.innerHTML = `<span class="material-symbols-outlined">delete</span>`;
+      trashcan.id = 'delete-button';
       bookAuthor.innerHTML = `<span>Author:</span> ${book.author}`;
       numberOfPages.innerHTML = `<span>Pages:</span> ${book.numberOfPages}`;
       if (book.isRead) {
-        isRead.innerHTML = `<button class="read">read</button>`;
+        isRead.innerText = 'read';
+        isRead.className = 'read';
       } else {
-        isRead.innerHTML = `<button class="not-read">not read yet</button>`;
+        isRead.innerText = 'not read yet';
+        isRead.className = 'not-read';
       }
-      
-
 
       booksGridContainer.appendChild(bookCard);
-      bookCard.appendChild(bookTitle);
+      bookCard.appendChild(titleAndCanContainer);
+      titleAndCanContainer.appendChild(bookTitle);
+      titleAndCanContainer.appendChild(trashcan);
       bookCard.appendChild(bookAuthor);
       bookCard.appendChild(numberOfPages);
       bookCard.appendChild(isRead);
