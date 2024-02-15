@@ -31,24 +31,24 @@
 
     <!-- A modal dialog containing a form -->
     <dialog id="add-new-book-dialog">
-        <form>
+        <form id="addNewBookForm">
             <h3>Add new book</h3>
             <div class="input">
-                <input id="title" type="text" placeholder="Title">
+                <input name='title' id="title" type="text" placeholder="Title" maxlength="60" required>
             </div>
             <div class="input">
-                <input id="author" type="text" placeholder="Author">
+                <input name='author' id="author" type="text" placeholder="Author" maxlength="60" required>
             </div>
             <div class="input">
-                <input id="pages" type="text" placeholder="Pages">
+                <input id="pages" type="number" placeholder="Pages" min="1" max="30000">
             </div>
             <div class="input checkbox">
                 <label for="isread">Have you read this book?</label>
                 <input id="isread" type="checkbox">
             </div>
             <div class="modal-buttons">
-                <button id="confirmBtn" value="default">Confirm</button>
-                <button value="cancel" formmethod="dialog">Cancel</button>
+                <button type="submit" id="confirmBtn">Confirm</button>
+                <button type="button" id="cancelBtn">Cancel</button>
             </div>
         </form>
     </dialog>
@@ -60,6 +60,5 @@
             <button id="noBtn">No</button>
         </div>
     </dialog>
-
 </body>
 </html>

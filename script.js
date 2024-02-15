@@ -1,18 +1,22 @@
 const myLibrary = [];
+
 const booksGridContainer = document.querySelector('.books-grid-container');
-const showButton = document.getElementById("show-dialog-btn");
+
 const favDialog = document.getElementById("add-new-book-dialog");
+
 const confirmBtn = favDialog.querySelector("#confirmBtn");
+
+const cancelBtn = favDialog.querySelector("#cancelBtn");
+
 const deleteDialog = document.getElementById("want-to-delete");
+
 const yesBtn = document.getElementById('yesBtn');
+
 const noBtn = document.getElementById('noBtn');
 
-let bookTitle;
-let trashcan;
-let titleAndCanContainer;
-let bookAuthor;
-let numberOfPages;
-let isRead;
+const showButton = document.getElementById("show-dialog-btn");
+
+let bookTitle, trashcan, titleAndCanContainer, bookAuthor, numberOfPages, isRead;
 
 function Book(title, author, numberOfPages, isRead) {
   this.title = title;
@@ -66,13 +70,8 @@ const fillBookCardElementsWithContent = (book) => {
   bookAuthor.innerHTML = `<span>Author:</span> ${book.author}`;
   numberOfPages.innerHTML = `<span>Pages:</span> ${book.numberOfPages}`;
   
-  if (book.isRead) {
-    isRead.innerText = 'read';
-    isRead.className = 'read';
-  } else {
-    isRead.innerText = 'not read yet';
-    isRead.className = 'not-read';
-  }
+  isRead.innerText = book.isRead ? 'read' : 'not read yet';
+  isRead.className = book.isRead ? 'read' : 'not-read';
 }
 
 
@@ -93,6 +92,15 @@ function createBookCard(book, index) {
   bookCard.appendChild(numberOfPages);
   bookCard.appendChild(isRead);
 
+  handleDeleteClick(bookCard);
+
+  isRead.addEventListener('click', () => {
+    book.toggleReadStatus();
+    updateBooksGrid();
+  });
+}
+
+function handleDeleteClick(bookCard) {
   trashcan.addEventListener('click', () => {
     deleteDialog.showModal();
     yesBtn.onclick = () => {
@@ -104,16 +112,10 @@ function createBookCard(book, index) {
       deleteDialog.close();
     };
   });
-
-  isRead.addEventListener('click', () => {
-    book.toggleReadStatus();
-    updateBooksGrid();
-  });
 }
 
 const deleteBook = (bookCard) => {
   let indexToRemove = parseInt(bookCard.getAttribute("data-index"));
-  console.log(indexToRemove)
   myLibrary.splice(indexToRemove, 1);
   updateBooksGrid();
 }
@@ -137,11 +139,6 @@ const getBookFromInput = () => {
   return new Book(bookTitle, bookAuthor, numberOfPages, isRead);
 }
 
-
-
-
-
-
 function resetModalDialog() {
   document.getElementById('title').value = '';
   document.getElementById('author').value = '';
@@ -149,16 +146,27 @@ function resetModalDialog() {
   document.getElementById('isread').checked = '';
 }
 
-// showButton opens the <dialog> modally
+//showButton opens the <dialog> modally
 showButton.addEventListener("click", () => {
   favDialog.showModal();
 });
 
 confirmBtn.addEventListener("click", (event) => {
-  event.preventDefault();
-  const newBook = getBookFromInput();
-  addBookToLibrary(newBook);
-  favDialog.close();
-  updateBooksGrid();
-  resetModalDialog();
+  const form = document.getElementById('addNewBookForm');
+
+  if(form.checkValidity()){
+    const newBook = getBookFromInput();
+
+    addBookToLibrary(newBook);
+
+    favDialog.close();
+
+    updateBooksGrid();
+
+    resetModalDialog();
+  }
+});
+
+cancelBtn.addEventListener("click", (event) => {
+    favDialog.close();
 });
