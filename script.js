@@ -153,6 +153,7 @@ confirmBtn.addEventListener("click", (event) => {
 
     resetModalDialog();
   }
+  booksGridContainer.classList.remove('template');
 });
 
 cancelBtn.addEventListener("click", (event) => {
