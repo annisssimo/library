@@ -2,6 +2,8 @@ const myLibrary = [];
 
 const booksGridContainer = document.querySelector('.books-grid-container');
 
+const template = document.querySelector('.template p')
+
 const favDialog = document.getElementById("add-new-book-dialog");
 
 const confirmBtn = favDialog.querySelector("#confirmBtn");
@@ -33,20 +35,6 @@ function addBookToLibrary(newBook) {
   myLibrary.push(newBook);
   return myLibrary;
 }
-
-//BOILERPLATE
-// const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet');
-// const harryPotter = new Book('Harry Potter and the Sorcerer\'s Stone', 'J.K. Rowling', 309, 'read');
-// const toKillAMockingbird = new Book('To Kill a Mockingbird', 'Harper Lee', 281, 'read');
-// const theGreatGatsby = new Book('The Great Gatsby', 'F. Scott Fitzgerald', 180, 'not read yet');
-// const romeoAndJuliet = new Book('Romeo and Juliet', 'William Shakespeare', 187, 'read');
-
-// addBookToLibrary(theHobbit);
-// addBookToLibrary(harryPotter);
-// addBookToLibrary(toKillAMockingbird);
-// addBookToLibrary(theGreatGatsby);
-// addBookToLibrary(romeoAndJuliet);
-
 
 const createBookCardElements = () => {
   bookTitle = document.createElement('p');
@@ -170,3 +158,27 @@ confirmBtn.addEventListener("click", (event) => {
 cancelBtn.addEventListener("click", (event) => {
     favDialog.close();
 });
+
+
+//template
+
+template.addEventListener('click', () => {
+
+  booksGridContainer.classList.remove('template');
+
+  const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
+  const harryPotter = new Book('Harry Potter and the Sorcerer\'s Stone', 'J.K. Rowling', 309, false);
+  const toKillAMockingbird = new Book('To Kill a Mockingbird', 'Harper Lee', 281, false);
+  const theGreatGatsby = new Book('The Great Gatsby', 'F. Scott Fitzgerald', 180, false);
+  const romeoAndJuliet = new Book('Romeo and Juliet', 'William Shakespeare', 187, false);
+  
+  addBookToLibrary(theHobbit);
+  addBookToLibrary(harryPotter);
+  addBookToLibrary(toKillAMockingbird);
+  addBookToLibrary(theGreatGatsby);
+  addBookToLibrary(romeoAndJuliet);
+
+  updateBooksGrid();
+});
+
+

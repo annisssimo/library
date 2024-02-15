@@ -278,3 +278,15 @@ input[type="checkbox"]:disabled {
     padding-top: 20px;
     gap: 80px;
 }
+
+.template {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    text-decoration: underline;
+}
+
+.template p {
+    cursor: pointer;
+}
