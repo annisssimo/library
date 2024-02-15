@@ -290,3 +290,72 @@ input[type="checkbox"]:disabled {
 .template p {
     cursor: pointer;
 }
+
+/* For smaller screens */
+@media only screen and (max-width: 600px) {
+    header {
+      padding-left: 20px;
+    }
+  
+    .container {
+      padding: 0 20px;
+    }
+  
+    .books-grid-container {
+      grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+      gap: 10px;
+    }
+  
+    img[alt="Book"] {
+      width: 40px;
+      height: 40px;
+    }
+  
+    h1 {
+      font-size: 2rem;
+    }
+  
+    .add-button-container {
+      margin: 20px;
+    }
+  
+    #show-dialog-btn,
+    #confirmBtn,
+    #cancelBtn,
+    #yesBtn,
+    #noBtn {
+      font-size: 1rem;
+      padding: 8px 16px;
+    }
+  
+    .book-card {
+      padding: 20px;
+      font-size: 18px;
+    }
+  
+    .modal-buttons {
+      gap: 40px;
+    }
+  
+    dialog {
+      width: 80%;
+    }
+  
+    input[type="checkbox"] {
+      vertical-align: -5px;
+    }
+  }
+  
+  /* For medium screens */
+  @media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .container {
+      padding: 0 50px;
+    }
+  }
+  
+  /* For larger screens */
+  @media only screen and (min-width: 1025px) {
+    .container {
+      padding: 0 100px;
+    }
+  }
