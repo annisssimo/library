@@ -1,6 +1,12 @@
 const myLibrary = [];
 const booksGridContainer = document.querySelector('.books-grid-container');
-let bookCard;
+const showButton = document.getElementById("show-dialog-btn");
+const favDialog = document.getElementById("add-new-book-dialog");
+const confirmBtn = favDialog.querySelector("#confirmBtn");
+const deleteDialog = document.getElementById("want-to-delete");
+const yesBtn = document.getElementById('yesBtn');
+const noBtn = document.getElementById('noBtn');
+
 let bookTitle;
 let trashcan;
 let titleAndCanContainer;
@@ -39,9 +45,6 @@ function addBookToLibrary(newBook) {
 
 
 const createBookCardElements = () => {
-  bookCard = document.createElement('div');
-  bookCard.className = 'book-card';
-  
   bookTitle = document.createElement('p');
 
   trashcan = document.createElement('button');
@@ -73,8 +76,11 @@ const fillBookCardElementsWithContent = (book) => {
 }
 
 
-//loops through the array and displays each book on the page
-function createBookCard(book) {
+function createBookCard(book, index) {
+  const bookCard = document.createElement('div');
+  bookCard.className = 'book-card';
+  bookCard.setAttribute('data-index', index);
+
   createBookCardElements();
 
   fillBookCardElementsWithContent(book);
@@ -89,6 +95,14 @@ function createBookCard(book) {
 
   trashcan.addEventListener('click', () => {
     deleteDialog.showModal();
+    yesBtn.onclick = () => {
+      deleteDialog.close();
+      deleteBook(bookCard);
+    };
+    
+    noBtn.onclick = () => {
+      deleteDialog.close();
+    };
   });
 
   isRead.addEventListener('click', () => {
@@ -98,9 +112,10 @@ function createBookCard(book) {
 }
 
 const deleteBook = (bookCard) => {
-  let indexToRemove = Array.from(booksGridContainer.children).indexOf(bookCard);
+  let indexToRemove = parseInt(bookCard.getAttribute("data-index"));
+  console.log(indexToRemove)
   myLibrary.splice(indexToRemove, 1);
-  bookCard.remove();
+  updateBooksGrid();
 }
 
 const resetBooksGrid = () => {
@@ -109,8 +124,8 @@ const resetBooksGrid = () => {
 
 function updateBooksGrid() {
   resetBooksGrid();
-  myLibrary.forEach((book) => {
-    createBookCard(book)
+  myLibrary.forEach((book, index) => {
+    createBookCard(book, index);
   });
 }
 
@@ -127,11 +142,6 @@ const getBookFromInput = () => {
 
 
 
-//MODALS
-const showButton = document.getElementById("show-dialog-btn");
-const favDialog = document.getElementById("add-new-book-dialog");
-const confirmBtn = favDialog.querySelector("#confirmBtn");
-
 function resetModalDialog() {
   document.getElementById('title').value = '';
   document.getElementById('author').value = '';
@@ -144,7 +154,6 @@ showButton.addEventListener("click", () => {
   favDialog.showModal();
 });
 
-// Prevent the "confirm" button from the default behavior of submitting the form, and close the dialog with the `close()` method, which triggers the "close" event.
 confirmBtn.addEventListener("click", (event) => {
   event.preventDefault();
   const newBook = getBookFromInput();
@@ -152,19 +161,4 @@ confirmBtn.addEventListener("click", (event) => {
   favDialog.close();
   updateBooksGrid();
   resetModalDialog();
-});
-
-//MODAL::ARE YOU SURE YOU WANT TO DELETE THIS BOOK?
-const deleteDialog = document.getElementById("want-to-delete");
-const yesBtn = document.getElementById('yesBtn');
-const noBtn = document.getElementById('noBtn');
-
-
-yesBtn.addEventListener("click", (event) => {
-  deleteDialog.close();
-  deleteBook(bookCard);
-});
-
-noBtn.addEventListener("click", (event) => {
-  deleteDialog.close();
 });

@@ -15,6 +15,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  outline: none;
 }
 
 html {
@@ -228,7 +229,6 @@ input {
 }
 
 input:focus {
-    outline: none;
     border-bottom: 1px solid var(--brown)
 }
 
