@@ -1,3 +1,24 @@
+const booksGridContainer = document.querySelector('.books-grid-container');
+
+const template = document.querySelector('.template p')
+
+const favDialog = document.getElementById("add-new-book-dialog");
+
+const confirmBtn = favDialog.querySelector("#confirmBtn");
+
+const cancelBtn = favDialog.querySelector("#cancelBtn");
+
+const deleteDialog = document.getElementById("want-to-delete");
+
+const yesBtn = document.getElementById('yesBtn');
+
+const noBtn = document.getElementById('noBtn');
+
+const showButton = document.getElementById("show-dialog-btn");
+
+let bookTitle, trashcan, titleAndCanContainer, bookAuthor, numberOfPages, isRead;
+
+
 class Book {
   constructor(options) {
     this.title = options.title;
@@ -12,49 +33,14 @@ class Book {
 
 }
 
-const theHobbit = new Book({
-  title: 'The Hobbit',
-  author: 'J.R.R. Tolkien',
-  numberOfPages: 295,
-  isRead: false
-});
-
-const harryPotter = new Book({
-  title: 'Harry Potter and the Sorcerer\'s Stone',
-  author: 'J.K. Rowling',
-  numberOfPages: 309,
-  isRead: false
-});
-
-const toKillAMockingbird = new Book({
-  title: 'To Kill a Mockingbird',
-  author: 'Harper Lee',
-  numberOfPages: 281,
-  isRead: false
-});
-
-const theGreatGatsby = new Book({
-  title: 'The Great Gatsby',
-  author: 'F. Scott Fitzgerald',
-  numberOfPages: 180,
-  isRead: false
-});
-
-const romeoAndJuliet = new Book({
-  title: 'Romeo and Juliet',
-  author: 'William Shakespeare',
-  numberOfPages: 187,
-  isRead: false
-});
-
 class Library {
   constructor() {
     this.myLibrary = [];
   }
 
   addBookToLibrary(newBook) {
-    myLibrary.push(newBook);
-    return myLibrary;
+    this.myLibrary.push(newBook);
+    return this.myLibrary;
   }
 
   deleteBook(bookCard) {
@@ -68,9 +54,9 @@ class Library {
   }
   
   updateBooksGrid() {
-    resetBooksGrid();
-    myLibrary.forEach((book, index) => {
-      createBookCard(book, index);
+    this.resetBooksGrid();
+    this.myLibrary.forEach((book, index) => {
+      this.createBookCard(book, index);
     });
   }
 
@@ -106,9 +92,9 @@ class Library {
     bookCard.className = 'book-card';
     bookCard.setAttribute('data-index', index);
   
-    createBookCardElements();
+    this.createBookCardElements();
   
-    fillBookCardElementsWithContent(book);
+    this.fillBookCardElementsWithContent(book);
     
     booksGridContainer.appendChild(bookCard);
     bookCard.appendChild(titleAndCanContainer);
@@ -118,11 +104,11 @@ class Library {
     bookCard.appendChild(numberOfPages);
     bookCard.appendChild(isRead);
   
-    handleDeleteClick(bookCard);
+    this.handleDeleteClick(bookCard);
   
     isRead.addEventListener('click', () => {
       book.toggleReadStatus();
-      updateBooksGrid();
+      this.updateBooksGrid();
     });
   }
 
@@ -142,23 +128,98 @@ class Library {
 
 }
 
+const library = new Library();
+
+class UI {
+  static getBookFromInput() {
+    const bookTitle = document.getElementById('title').value;
+    const bookAuthor = document.getElementById('author').value;
+    const numberOfPages = document.getElementById('pages').value;
+    const isRead = document.getElementById('isread').checked;
+    return new Book(bookTitle, bookAuthor, numberOfPages, isRead);
+  }
+  
+  static resetModalDialog() {
+    document.getElementById('title').value = '';
+    document.getElementById('author').value = '';
+    document.getElementById('pages').value = '';
+    document.getElementById('isread').checked = '';
+  }
+}
+
+//showButton opens the <dialog> modally
+showButton.addEventListener("click", () => {
+  favDialog.showModal();
+});
+
+confirmBtn.addEventListener("click", (event) => {
+  const form = document.getElementById('addNewBookForm');
+
+  if(form.checkValidity()){
+    const newBook = getBookFromInput();
+
+    addBookToLibrary(newBook);
+
+    favDialog.close();
+
+    updateBooksGrid();
+
+    resetModalDialog();
+  }
+  booksGridContainer.classList.remove('template');
+});
+
+cancelBtn.addEventListener("click", (event) => {
+    favDialog.close();
+});
+
+
 //template
 
 template.addEventListener('click', () => {
 
   booksGridContainer.classList.remove('template');
 
-  const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
-  const harryPotter = new Book('Harry Potter and the Sorcerer\'s Stone', 'J.K. Rowling', 309, false);
-  const toKillAMockingbird = new Book('To Kill a Mockingbird', 'Harper Lee', 281, false);
-  const theGreatGatsby = new Book('The Great Gatsby', 'F. Scott Fitzgerald', 180, false);
-  const romeoAndJuliet = new Book('Romeo and Juliet', 'William Shakespeare', 187, false);
+  const theHobbit = new Book({
+    title: 'The Hobbit',
+    author: 'J.R.R. Tolkien',
+    numberOfPages: 295,
+    isRead: false
+  });
   
-  addBookToLibrary(theHobbit);
-  addBookToLibrary(harryPotter);
-  addBookToLibrary(toKillAMockingbird);
-  addBookToLibrary(theGreatGatsby);
-  addBookToLibrary(romeoAndJuliet);
+  const harryPotter = new Book({
+    title: 'Harry Potter and the Sorcerer\'s Stone',
+    author: 'J.K. Rowling',
+    numberOfPages: 309,
+    isRead: false
+  });
+  
+  const toKillAMockingbird = new Book({
+    title: 'To Kill a Mockingbird',
+    author: 'Harper Lee',
+    numberOfPages: 281,
+    isRead: false
+  });
+  
+  const theGreatGatsby = new Book({
+    title: 'The Great Gatsby',
+    author: 'F. Scott Fitzgerald',
+    numberOfPages: 180,
+    isRead: false
+  });
+  
+  const romeoAndJuliet = new Book({
+    title: 'Romeo and Juliet',
+    author: 'William Shakespeare',
+    numberOfPages: 187,
+    isRead: false
+  });
+  
+  library.addBookToLibrary(theHobbit);
+  library.addBookToLibrary(harryPotter);
+  library.addBookToLibrary(toKillAMockingbird);
+  library.addBookToLibrary(theGreatGatsby);
+  library.addBookToLibrary(romeoAndJuliet);
 
-  updateBooksGrid();
+  library.updateBooksGrid();
 });
