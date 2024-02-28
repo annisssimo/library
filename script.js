@@ -45,8 +45,8 @@ class Library {
 
   deleteBook(bookCard) {
     let indexToRemove = parseInt(bookCard.getAttribute("data-index"));
-    myLibrary.splice(indexToRemove, 1);
-    updateBooksGrid();
+    this.myLibrary.splice(indexToRemove, 1);
+    this.updateBooksGrid();
   }
 
   resetBooksGrid() {
@@ -76,10 +76,10 @@ class Library {
   }
   
   fillBookCardElementsWithContent(book) {
-    bookTitle.innerHTML = `<span>Book title:</span> ${book.title}`;
+    bookTitle.innerHTML = `<span>Book title:</span> ${book.bookTitle}`;
     trashcan.innerHTML = `<span class="material-symbols-outlined">delete</span>`;
     trashcan.id = 'delete-button';
-    bookAuthor.innerHTML = `<span>Author:</span> ${book.author}`;
+    bookAuthor.innerHTML = `<span>Author:</span> ${book.bookAuthor}`;
     numberOfPages.innerHTML = `<span>Pages:</span> ${book.numberOfPages}`;
     
     isRead.innerText = book.isRead ? 'read' : 'not read yet';
@@ -117,7 +117,7 @@ class Library {
       deleteDialog.showModal();
       yesBtn.onclick = () => {
         deleteDialog.close();
-        deleteBook(bookCard);
+        this.deleteBook(bookCard);
       };
       
       noBtn.onclick = () => {
@@ -136,7 +136,7 @@ class UI {
     const bookAuthor = document.getElementById('author').value;
     const numberOfPages = document.getElementById('pages').value;
     const isRead = document.getElementById('isread').checked;
-    return new Book(bookTitle, bookAuthor, numberOfPages, isRead);
+    return {bookTitle, bookAuthor, numberOfPages, isRead};
   }
   
   static resetModalDialog() {
@@ -156,15 +156,15 @@ confirmBtn.addEventListener("click", (event) => {
   const form = document.getElementById('addNewBookForm');
 
   if(form.checkValidity()){
-    const newBook = getBookFromInput();
+    const newBook = UI.getBookFromInput();
 
-    addBookToLibrary(newBook);
+    library.addBookToLibrary(newBook);
 
     favDialog.close();
 
-    updateBooksGrid();
+    library.updateBooksGrid();
 
-    resetModalDialog();
+    UI.resetModalDialog();
   }
   booksGridContainer.classList.remove('template');
 });
