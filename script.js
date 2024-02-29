@@ -76,10 +76,10 @@ class Library {
   }
   
   fillBookCardElementsWithContent(book) {
-    bookTitle.innerHTML = `<span>Book title:</span> ${book.bookTitle}`;
+    bookTitle.innerHTML = `<span>Book title:</span> ${book.title}`;
     trashcan.innerHTML = `<span class="material-symbols-outlined">delete</span>`;
     trashcan.id = 'delete-button';
-    bookAuthor.innerHTML = `<span>Author:</span> ${book.bookAuthor}`;
+    bookAuthor.innerHTML = `<span>Author:</span> ${book.author}`;
     numberOfPages.innerHTML = `<span>Pages:</span> ${book.numberOfPages}`;
     
     isRead.innerText = book.isRead ? 'read' : 'not read yet';
@@ -91,7 +91,7 @@ class Library {
     const bookCard = document.createElement('div');
     bookCard.className = 'book-card';
     bookCard.setAttribute('data-index', index);
-  
+
     this.createBookCardElements();
   
     this.fillBookCardElementsWithContent(book);
@@ -132,11 +132,11 @@ const library = new Library();
 
 class UI {
   static getBookFromInput() {
-    const bookTitle = document.getElementById('title').value;
-    const bookAuthor = document.getElementById('author').value;
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
     const numberOfPages = document.getElementById('pages').value;
     const isRead = document.getElementById('isread').checked;
-    return {bookTitle, bookAuthor, numberOfPages, isRead};
+    return {title, author, numberOfPages, isRead};
   }
   
   static resetModalDialog() {
