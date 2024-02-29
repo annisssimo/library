@@ -86,7 +86,6 @@ class Library {
     isRead.className = book.isRead ? 'read' : 'not-read';
   }
   
-  
   createBookCard(book, index) {
     const bookCard = document.createElement('div');
     bookCard.className = 'book-card';
@@ -136,7 +135,9 @@ class UI {
     const author = document.getElementById('author').value;
     const numberOfPages = document.getElementById('pages').value;
     const isRead = document.getElementById('isread').checked;
-    return {title, author, numberOfPages, isRead};
+
+    const newBook = new Book({ title, author, numberOfPages, isRead });
+    return newBook;
   }
   
   static resetModalDialog() {
@@ -152,7 +153,7 @@ showButton.addEventListener("click", () => {
   favDialog.showModal();
 });
 
-confirmBtn.addEventListener("click", (event) => {
+confirmBtn.addEventListener("click", () => {
   const form = document.getElementById('addNewBookForm');
 
   if(form.checkValidity()){
@@ -169,7 +170,7 @@ confirmBtn.addEventListener("click", (event) => {
   booksGridContainer.classList.remove('template');
 });
 
-cancelBtn.addEventListener("click", (event) => {
+cancelBtn.addEventListener("click", () => {
     favDialog.close();
 });
 
