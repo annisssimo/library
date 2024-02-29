@@ -102,29 +102,24 @@ class Library {
     bookCard.appendChild(bookAuthor);
     bookCard.appendChild(numberOfPages);
     bookCard.appendChild(isRead);
-  
-    this.handleDeleteClick(bookCard);
-  
+
+    // Add event listener to the trashcan button
+    trashcan.addEventListener('click', () => {
+      UI.showDialog(deleteDialog);
+      yesBtn.addEventListener('click', () => {
+        library.deleteBook(bookCard);
+        UI.hideDialog(deleteDialog);
+      });
+      noBtn.addEventListener('click', () => {
+        UI.hideDialog(deleteDialog);
+      });
+    });
+    
     isRead.addEventListener('click', () => {
       book.toggleReadStatus();
       this.updateBooksGrid();
     });
   }
-
-  handleDeleteClick(bookCard) {
-    trashcan.addEventListener('click', () => {
-      deleteDialog.showModal();
-      yesBtn.onclick = () => {
-        deleteDialog.close();
-        this.deleteBook(bookCard);
-      };
-      
-      noBtn.onclick = () => {
-        deleteDialog.close();
-      };
-    });
-  }
-
 }
 
 const library = new Library();
@@ -136,21 +131,25 @@ class UI {
     const numberOfPages = document.getElementById('pages').value;
     const isRead = document.getElementById('isread').checked;
 
-    const newBook = new Book({ title, author, numberOfPages, isRead });
-    return newBook;
+    return new Book({ title, author, numberOfPages, isRead });
+  }
+
+  static showDialog(dialog) {
+    dialog.showModal();
   }
   
-  static resetModalDialog() {
-    document.getElementById('title').value = '';
-    document.getElementById('author').value = '';
-    document.getElementById('pages').value = '';
-    document.getElementById('isread').checked = '';
+  static hideDialog(dialog) {
+    dialog.close();
+  }
+
+  static clearForm() {
+    document.getElementById('addNewBookForm').reset();
   }
 }
 
 //showButton opens the <dialog> modally
 showButton.addEventListener("click", () => {
-  favDialog.showModal();
+  UI.showDialog(favDialog);
 });
 
 confirmBtn.addEventListener("click", () => {
@@ -161,11 +160,11 @@ confirmBtn.addEventListener("click", () => {
 
     library.addBookToLibrary(newBook);
 
-    favDialog.close();
+    UI.hideDialog(favDialog);
 
     library.updateBooksGrid();
 
-    UI.resetModalDialog();
+    UI.clearForm();
   }
   booksGridContainer.classList.remove('template');
 });
