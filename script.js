@@ -1,16 +1,5 @@
-// Destructuring assignment to declare variables
 let bookTitle, trashcan, titleAndCanContainer, bookAuthor, numberOfPages, isRead;
-
-// Selecting elements
-const booksGridContainer = document.querySelector('.books-grid-container');
 const template = document.querySelector('.template p')
-const favDialog = document.getElementById("add-new-book-dialog");
-const confirmBtn = favDialog.querySelector("#confirmBtn");
-const cancelBtn = favDialog.querySelector("#cancelBtn");
-const deleteDialog = document.getElementById("want-to-delete");
-const yesBtn = document.getElementById('yesBtn');
-const noBtn = document.getElementById('noBtn');
-const showButton = document.getElementById("show-dialog-btn");
 
 class Book {
   constructor(options) {
@@ -43,7 +32,7 @@ class Library {
   }
 
   resetBooksGrid() {
-    booksGridContainer.innerHTML = '';
+    ui.booksGridContainer.innerHTML = '';
   }
   
   updateBooksGrid() {
@@ -81,7 +70,7 @@ class Library {
     this.createBookCardElements();
     this.fillBookCardElementsWithContent(book);
     
-    booksGridContainer.appendChild(bookCard);
+    ui.booksGridContainer.appendChild(bookCard);
     bookCard.appendChild(titleAndCanContainer);
     titleAndCanContainer.appendChild(bookTitle);
     titleAndCanContainer.appendChild(trashcan);
@@ -95,12 +84,12 @@ class Library {
   }
 
   handleDeleteClick(bookCard) {
-    UI.showDialog(deleteDialog);
-    yesBtn.addEventListener('click', () => {
+    UI.showDialog(ui.deleteDialog);
+    ui.yesBtn.addEventListener('click', () => {
       this.deleteBook(bookCard);
-      UI.hideDialog(deleteDialog);
+      UI.hideDialog(ui.deleteDialog);
     });
-    noBtn.addEventListener('click', () => UI.hideDialog(deleteDialog));
+    ui.noBtn.addEventListener('click', () => UI.hideDialog(ui.deleteDialog));
   }
 
   handleReadStatusToggle(book) {
@@ -113,6 +102,18 @@ class Library {
 const library = new Library();
 
 class UI {
+
+  constructor() {
+    this.booksGridContainer = document.querySelector('.books-grid-container');
+    this.favDialog = document.getElementById("add-new-book-dialog");
+    this.confirmBtn = this.favDialog.querySelector("#confirmBtn");
+    this.cancelBtn = this.favDialog.querySelector("#cancelBtn");
+    this.deleteDialog = document.getElementById("want-to-delete");
+    this.yesBtn = document.getElementById('yesBtn');
+    this.noBtn = document.getElementById('noBtn');
+    this.showButton = document.getElementById("show-dialog-btn");
+  }
+
   static getBookFromInput() {
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
@@ -135,20 +136,22 @@ class UI {
   }
 }
 
+const ui = new UI();
+
 function handleConfirmBtnClick() {
   const form = document.getElementById('addNewBookForm');
   if (form.checkValidity()) {
     const newBook = UI.getBookFromInput();
     library.addBookToLibrary(newBook);
-    UI.hideDialog(favDialog);
+    UI.hideDialog(ui.favDialog);
     library.updateBooksGrid();
     UI.clearForm();
   }
-  booksGridContainer.classList.remove('template');
+  ui.booksGridContainer.classList.remove('template');
 }
 
 function loadTemplateBooks() {
-  booksGridContainer.classList.remove('template');
+  ui.booksGridContainer.classList.remove('template');
 
   const books = [
     new Book({ title: 'The Hobbit', author: 'J.R.R. Tolkien', numberOfPages: 295, isRead: false }),
@@ -163,7 +166,7 @@ function loadTemplateBooks() {
 }
 
 // Event listeners
-showButton.addEventListener('click', () => UI.showDialog(favDialog));
-confirmBtn.addEventListener('click', () => handleConfirmBtnClick());
-cancelBtn.addEventListener('click', () => UI.hideDialog(favDialog));
+ui.showButton.addEventListener('click', () => UI.showDialog(ui.favDialog));
+ui.confirmBtn.addEventListener('click', () => handleConfirmBtnClick());
+ui.cancelBtn.addEventListener('click', () => UI.hideDialog(ui.favDialog));
 template.addEventListener('click', () => loadTemplateBooks());
