@@ -1,11 +1,11 @@
 :root {
-    --background-beidge: antiquewhite;
-    --dark-brown: rgb(55, 32, 2);
-    --brown: rgb(188, 68, 68);
-    --white: aliceblue;
-    --card-color: rgb(255, 246, 234);
-    --spacing: 20px;
-    --container-width: 1400px;
+  --background-beidge: antiquewhite;
+  --dark-brown: rgb(55, 32, 2);
+  --brown: rgb(188, 68, 68);
+  --white: aliceblue;
+  --card-color: rgb(255, 246, 234);
+  --spacing: 20px;
+  --container-width: 1400px;
 }
 
 /* CSS RESET */
@@ -19,66 +19,66 @@
 }
 
 html {
-    /* footer support */
-    position: relative;
-    min-height: 100%;
+  /* footer support */
+  position: relative;
+  min-height: 100%;
 }
 
 body {
-    background-color: var(--background-beidge);
-    /* footer support */
-    margin-bottom: 100px;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: var(--background-beidge);
+  /* footer support */
+  margin-bottom: 100px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 header {
-    display: flex;
-    padding-left: 100px;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  padding-left: 100px;
+  align-items: center;
+  gap: 10px;
 }
 
 .container {
-    max-width: var(--container-width);
-    padding: 0 100px;
-    margin: 0 auto;
+  max-width: var(--container-width);
+  padding: 0 100px;
+  margin: 0 auto;
 }
 
 .books-grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: var(--spacing);
-    margin-top: var(--spacing);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing);
+  margin-top: var(--spacing);
 }
 
-img[alt="Book"] {
-    width: 60px; 
-    height: 60px;
-    position: relative;
-    top: 14px;
+img[alt='Book'] {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  top: 14px;
 }
 
 h1 {
-    text-align: center;
-    font-size: 3rem;
-    color: var(--dark-brown);
-    margin-top: 30px;
+  text-align: center;
+  font-size: 3rem;
+  color: var(--dark-brown);
+  margin-top: 30px;
 }
 
 button {
-    transition: transform 0.3s;
-    font-family: inherit;
-    cursor: pointer;
-    border: none;
-    background-color: var(--brown);
-    color: var(--white);
-    border-radius: 40px;
+  transition: transform 0.3s;
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background-color: var(--brown);
+  color: var(--white);
+  border-radius: 40px;
 }
 
 .add-button-container {
-    display: flex;
-    justify-content: center;
-    margin: 40px;
+  display: flex;
+  justify-content: center;
+  margin: 40px;
 }
 
 #show-dialog-btn,
@@ -86,276 +86,297 @@ button {
 #cancelBtn,
 #yesBtn,
 #noBtn {
-    font-size: 1.3rem;
-    padding: 10px 20px;
-    transition: transform 0.3s, padding-left 0.3s;
+  font-size: 1.3rem;
+  padding: 10px 20px;
+  transition: transform 0.3s, padding-left 0.3s;
 }
 
 #show-dialog-btn:hover {
-    transform: scale(1.1);
-    padding-left: 2.5rem;
+  transform: scale(1.1);
+  padding-left: 2.5rem;
 }
 
 #show-dialog-btn::before {
-    content: '+';
-    position: absolute;
-    top: 50%;
-    right: 86%;
-    transform: translateY(-50%);
-    font-size: 1.6rem;
-    color: var(--white);
-    opacity: 0;
-    transition: opacity 0.3s;
+  content: '+';
+  position: absolute;
+  top: 50%;
+  right: 86%;
+  transform: translateY(-50%);
+  font-size: 1.6rem;
+  color: var(--white);
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 #show-dialog-btn:hover::before {
-    opacity: 1;
+  opacity: 1;
 }
 
 .book-card {
-    height: auto;
-    background-color: var(--card-color);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(46, 1, 1, 0.2);
-    padding: 30px;
-    font-size: 22px;
-    /* line-height: 40px; */
-    border-left: 1rem solid var(--brown);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-} 
+  height: auto;
+  background-color: var(--card-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(46, 1, 1, 0.2);
+  padding: 30px;
+  font-size: 22px;
+  /* line-height: 40px; */
+  border-left: 1rem solid var(--brown);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
 p {
-    margin-bottom: var(--spacing);
+  margin-bottom: var(--spacing);
 }
 
 p span {
-    font-weight: 700;
-    color: var(--dark-brown);
+  font-weight: 700;
+  color: var(--dark-brown);
 }
 
 footer {
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    padding: 16px 0;
-    opacity: 0.8;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px 0;
+  opacity: 0.8;
 }
 
 .github {
-    height: 30px;
-    opacity: 0.9;
-    transition: transform 0.3s ease-in-out;
+  height: 30px;
+  opacity: 0.9;
+  transition: transform 0.3s ease-in-out;
 }
 
 .github:hover {
-    transform: rotate(360deg) scale(1.2);
+  transform: rotate(360deg) scale(1.2);
 }
 
 .read,
 .not-read {
-    background-color: white;
-    padding: 5px 10px;
-    border-radius: 10px;
-    font-size: 1.2rem;
-    margin-top: 24px;
-    box-shadow: 2px 2px 2px rgba(46, 1, 1, 0.2);
-    border: 1px solid var(--brown);
-    color: var(--brown);
+  background-color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  margin-top: 24px;
+  box-shadow: 2px 2px 2px rgba(46, 1, 1, 0.2);
+  border: 1px solid var(--brown);
+  color: var(--brown);
 }
 
 .read {
-    font-weight: 700;
-}   
+  font-weight: 700;
+}
 
 .not-read {
-    opacity: 80%;
+  opacity: 80%;
 }
 
 .read:hover,
 .not-read:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 #delete-button {
-    background-color: var(--card-color);
-    color: var(--dark-brown);
+  background-color: var(--card-color);
+  color: var(--dark-brown);
 }
 
 #delete-button:hover,
 #confirmBtn:hover,
-button[value="cancel"]:hover {
-    transform: scale(1.15);
+button[value='cancel']:hover {
+  transform: scale(1.15);
 }
 
 .trash-and-title-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    gap: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 10px;
 }
 
 /* MODAL */
 dialog {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 450px;
-    background-color: var(--card-color);
-    border-radius: 10px;
-    border: none;
-    box-shadow: 4px 4px 8px rgba(6, 1, 1, 0.4);
-    padding: 30px;
-    font-size: 22px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: var(--card-color);
+  border-radius: 10px;
+  border: none;
+  box-shadow: 4px 4px 8px rgba(6, 1, 1, 0.4);
+  padding: 30px;
+  font-size: 22px;
 }
 
 h3 {
-    text-align: center;
+  text-align: center;
 }
 
 input {
-    font-size: inherit;
-    font-family: inherit;
-    border: none;
-    background-color: inherit;
-    padding: 5px 0;
-    margin: 10px;
+  display: block;
+  font-size: inherit;
+  font-family: inherit;
+  border: none;
+  background-color: inherit;
+  padding: 5px 0;
 }
 
 input:focus {
-    border-bottom: 1px solid var(--brown)
+  border-bottom: 1px solid var(--brown);
 }
 
-input[type="checkbox"] {
-    appearance: none;
-    position: relative;
-    width: 1em;
-    height: 1em;
-    border: 1px solid gray;
-    /* Adjusts the position of the checkboxes on the text baseline */
-    vertical-align: -11px;
-    /* Set here so that Windows' High-Contrast Mode can override */
-    color: var(--brown);
-}
-  
-input[type="checkbox"]::before {
-    content: "yes!";
-    position: absolute;
-    font-size: 1.2em;
-    right: -11px;
-    top: -4px;
-    visibility: hidden;
-}
-  
-input[type="checkbox"]:checked::before {
-    /* Use `visibility` instead of `display` to avoid recalculating layout */
-    visibility: visible;
+#isRead {
+  display: inline;
 }
 
-input[type="checkbox"]:checked {
-    border: none;
+input[type='checkbox'] {
+  appearance: none;
+  position: relative;
+  width: 1em;
+  height: 1em;
+  border: 1px solid gray;
+  /* Adjusts the position of the checkboxes on the text baseline */
+  vertical-align: -11px;
+  /* Set here so that Windows' High-Contrast Mode can override */
+  color: var(--brown);
 }
-  
-input[type="checkbox"]:disabled {
-    border-color: black;
-    background: #ddd;
-    color: gray;
+
+input[type='checkbox']::before {
+  content: 'yes!';
+  position: absolute;
+  font-size: 1.2em;
+  right: -11px;
+  top: -4px;
+  visibility: hidden;
+}
+
+input[type='checkbox']:checked::before {
+  /* Use `visibility` instead of `display` to avoid recalculating layout */
+  visibility: visible;
+}
+
+input[type='checkbox']:checked {
+  border: none;
+}
+
+input[type='checkbox']:disabled {
+  border-color: black;
+  background: #ddd;
+  color: gray;
+}
+
+label {
+  position: relative;
+  right: 10px;
+  top: 9px;
 }
 
 .input.checkbox {
-    margin-left: 10px;
+  margin-left: 10px;
+}
+
+.error {
+  width: 220px;
+  background-color: #900;
+  padding: 0;
+  font-size: 70%;
+  color: white;
+  border-radius: 0 0 5px 5px;
+  box-sizing: border-box;
+}
+
+.error.active {
+  padding: 0.3em;
+  border: 1px solid #900;
 }
 
 .modal-buttons {
-    display: flex;
-    justify-content: center;
-    padding-top: 20px;
-    gap: 80px;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  gap: 80px;
 }
 
 .template {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50vh;
-    text-decoration: underline;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  text-decoration: underline;
 }
 
 .template p {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 /* For smaller screens */
 @media only screen and (max-width: 600px) {
-    header {
-      padding-left: 20px;
-    }
-  
-    .container {
-      padding: 0 20px;
-    }
-  
-    .books-grid-container {
-      grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
-      gap: 10px;
-    }
-  
-    img[alt="Book"] {
-      width: 40px;
-      height: 40px;
-    }
-  
-    h1 {
-      font-size: 2rem;
-    }
-  
-    .add-button-container {
-      margin: 20px;
-    }
-  
-    #show-dialog-btn,
-    #confirmBtn,
-    #cancelBtn,
-    #yesBtn,
-    #noBtn {
-      font-size: 1rem;
-      padding: 8px 16px;
-    }
-  
-    .book-card {
-      padding: 20px;
-      font-size: 18px;
-    }
-  
-    .modal-buttons {
-      gap: 40px;
-    }
-  
-    dialog {
-      width: 80%;
-    }
-  
-    input[type="checkbox"] {
-      vertical-align: -5px;
-    }
+  header {
+    padding-left: 20px;
   }
-  
-  /* For medium screens */
-  @media only screen and (min-width: 601px) and (max-width: 1024px) {
-    .container {
-      padding: 0 50px;
-    }
+
+  .container {
+    padding: 0 20px;
   }
-  
-  /* For larger screens */
-  @media only screen and (min-width: 1025px) {
-    .container {
-      padding: 0 100px;
-    }
+
+  .books-grid-container {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    gap: 10px;
   }
+
+  img[alt='Book'] {
+    width: 40px;
+    height: 40px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .add-button-container {
+    margin: 20px;
+  }
+
+  #show-dialog-btn,
+  #confirmBtn,
+  #cancelBtn,
+  #yesBtn,
+  #noBtn {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+
+  .book-card {
+    padding: 20px;
+    font-size: 18px;
+  }
+
+  .modal-buttons {
+    gap: 40px;
+  }
+
+  input[type='checkbox'] {
+    vertical-align: -5px;
+  }
+}
+
+/* For medium screens */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  .container {
+    padding: 0 50px;
+  }
+}
+
+/* For larger screens */
+@media only screen and (min-width: 1025px) {
+  .container {
+    padding: 0 100px;
+  }
+}
